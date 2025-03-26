@@ -1,1 +1,111 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Generador de Políticas de Privacidad</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      text-align: center;
+      background-color: #f4f4f4;
+    }
+    .container {
+      max-width: 600px;
+      margin: auto;
+      background: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    button {
+      background-color: #3498db;
+      color: #fff;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    button:hover {
+      background-color: #2980b9;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-sizing: border-box;
+    }
+    #output {
+      margin-top: 20px;
+    }
+    .link-button {
+      display: inline-block;
+      text-decoration: none;
+      background: #27ae60;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 5px;
+      font-size: 16px;
+      margin-top: 10px;
+    }
+    .link-button:hover {
+      background: #219150;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Generador de Políticas de Privacidad</h1>
+    <p>🔒 Protege a tus usuarios y cumple con la ley estableciendo una política clara sobre el manejo de datos personales.</p>
+    
+    <label for="sitioWeb">Ingresa el nombre de tu compañía o sitio web:</label>
+    <input type="text" id="sitioWeb" placeholder="Ejemplo: MiEmpresa">
+
+    <button onclick="generarTexto()">Generar Política</button>
+    <div id="output">
+      <button onclick="copiarTexto()">Copiar al Portapapeles</button>
+    </div>
+    <textarea id="copiedText" rows="20" readonly></textarea>
+    
+  </div>
+
+  <script>
+    function generarTexto() {
+      var sitioWebInput = document.getElementById('sitioWeb').value;
+      var textarea = document.getElementById('copiedText');
+      if (sitioWebInput.trim() === "") {
+        alert("Por favor, ingresa un nombre válido.");
+        return;
+      }
+      textarea.value = `POLÍTICA DE PRIVACIDAD \n\n
+      **1. Información que recopilamos** 📋\n\n
+      ${sitioWebInput} recopila información personal de los usuarios, como nombre, correo electrónico y otros datos relevantes, con el fin de proporcionar un mejor servicio. \n\n
+      **2. Uso de la información** 🔍\n\n
+      Utilizamos la información para mejorar nuestros servicios, contactar a los usuarios y enviar comunicaciones de interés. No compartimos datos con terceros sin consentimiento. \n\n
+      **3. Seguridad de los datos** 🔐\n\n
+      Implementamos medidas de seguridad para proteger los datos personales y prevenir accesos no autorizados. \n\n
+      **4. Derechos del usuario** 👤\n\n
+      Los usuarios pueden solicitar acceso, rectificación o eliminación de su información personal en cualquier momento. \n\n
+      **5. Contacto** ✉️\n\n
+      Para cualquier duda sobre esta política, puedes contactarnos en soporte@${sitioWebInput}.com. \n\n
+      **Última actualización:** ${new Date().toLocaleDateString()} \n\n`;
+    }
+
+    function copiarTexto() {
+      var copiedText = document.getElementById('copiedText');
+      copiedText.select();
+      document.execCommand('copy');
+      alert('Texto copiado al portapapeles');
+    }
+  </script>
+</body>
+</html>
 
